@@ -1,0 +1,30 @@
+@(error: String, loginForm: Form[User])
+
+@import helper._
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Login to ShareIt!</title>
+    </head>
+    <body>
+        
+        <h2>Login</h2>
+    
+    	@form(routes.Application.login()) {
+    	
+    	@if(error != null) {
+    		<h7>@error<h7/>
+    	}    		
+        
+        @inputText(loginForm("username"), '_label -> "User name") 
+        
+        @inputPassword(loginForm("password"), '_label -> "Password")
+        
+        <input type="submit" value="Login">
+        
+    }
+        
+    </body>
+</html>
