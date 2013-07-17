@@ -15,7 +15,8 @@ public class Application extends Controller {
 	static Form<User> loginForm = Form.form(User.class);
 	
     public static Result index() {
-        return ok(index.render("Welcome to THE ROAD CLUB."));
+    	String user = session("connected");
+        return ok(index.render(user));
     }
     
     public static Result signupEntry() {

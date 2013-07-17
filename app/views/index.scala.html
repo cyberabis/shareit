@@ -1,14 +1,18 @@
-@(message: String)
+@(user: String)
 
-@main("THE ROAD CLUB") {
+@main("TRC - Home") {
     
      <div class="hero-unit">
 		    	<h1>THE ROAD CLUB</h1>
 			    <p>Welcome to THEROADCLUB.COM. A place to plan your road trips and record them. Let's go!</p>
 			    <p>
-			    	<a class="btn btn-primary btn-large">
-			    		Login
-			    	</a>
+			    	@if(user == null) {
+				    	<a class="btn btn-success btn-large" href="@routes.Application.loginEntry()">
+				    		Login
+				    	</a>  or  <a class="btn btn-info btn-large" href="@routes.Application.signupEntry()">
+				    		Sign-up
+				    	</a>
+			    	}
 			    </p>
 		    </div>
 			
