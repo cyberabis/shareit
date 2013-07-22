@@ -8,6 +8,11 @@ GET		/signup						controllers.Application.signupEntry()
 POST	/signup						controllers.Application.signup()
 GET		/login						controllers.Application.loginEntry()
 POST	/login						controllers.Application.login()
+GET		/logout						controllers.Application.logout()
+GET		/tripguru					controllers.Application.tripGuruEntry()
+GET		/tripguru/oldQA				controllers.Application.oldQA()
+POST	/tripguru					controllers.Application.tripGuru()
+
 
 GET		/share						controllers.ShareApplication.shareEntry()
 POST	/share						controllers.ShareApplication.share()

@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String)(user: String)(content: Html)
 
 <!DOCTYPE html>
 
@@ -19,10 +19,15 @@
 					<li @if(title.equals("TRC - Home")){class="active"}><a href="@routes.Application.index()">Home</a></li>
 					<li @if(title.equals("TRC - Search Trips")){class="active"}><a href="#">Search Trips</a></li>
 					<li @if(title.equals("TRC - Log your Trip")){class="active"}><a href="#">Log your Trip</a></li>
-					<li @if(title.equals("TRC - Ask Trip Guru")){class="active"}><a href="#">Ask Trip Guru</a></li>
+					<li @if(title.equals("TRC - Ask Trip Guru")){class="active"}><a href="@routes.Application.tripGuru()">Ask Trip Guru</a></li>
+					<li @if(title.equals("TRC - Editorial")){class="active"}><a href="#">Editorial</a></li>
+					@if(user != null) {
 					<li @if(title.equals("TRC - My Account")){class="active"}><a href="#">My Account</a></li>
+					<li @if(title.equals("TRC - Logout")){class="active"}><a href="@routes.Application.logout()">Logout</a></li>
+					} else {
 					<li @if(title.equals("TRC - Login")){class="active"}><a href="@routes.Application.loginEntry()">Login</a></li>
-					<li @if(title.equals("TRC - sign-up")){class="active"}><a href="@routes.Application.signupEntry()">Sign-up</a></li>
+					<li @if(title.equals("TRC - Sign-up")){class="active"}><a href="@routes.Application.signupEntry()">Sign-up</a></li>
+					}
 					</ul>
 				</div>
     		</div>

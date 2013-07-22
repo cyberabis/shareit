@@ -2,8 +2,7 @@ package controllers;
 
 import play.data.*;
 import play.mvc.*;
-import processor.LoginManager;
-import processor.SignupManager;
+import processor.*;
 
 import models.*;
 
@@ -13,15 +12,17 @@ public class Application extends Controller {
   
 	static Form<User> signupForm = Form.form(User.class);
 	static Form<User> loginForm = Form.form(User.class);
+	static Form<Query> tripguruForm = Form.form(Query.class);
 	
     public static Result index() {
-    	String user = session("connected");
+    	String user = session("user");
         return ok(index.render(user));
     }
     
     public static Result signupEntry() {
     	String error = flash("error");
-    	return ok(signup.render(error, signupForm));
+    	String user = session("user");
+    	return ok(signup.render(error, user, signupForm));
     }
     
     public static Result signup() {
@@ -37,15 +38,18 @@ public class Application extends Controller {
 				flash("error", "Username already exists, choose a different one!");
 				return redirect(routes.Application.signup());
 			}
-			else
-				return redirect(routes.Application.index()); 		  
+			else {
+				session("user", filledForm.get().getUsername());
+				return redirect(routes.Application.index());
+			}
 		}
 		
     }
     
     public static Result loginEntry() {
     	String error = flash("error");
-    	return ok(login.render(error, loginForm));
+    	String user = session("user");
+    	return ok(login.render(error, user, loginForm));
     }
     
     public static Result login() {
@@ -57,7 +61,7 @@ public class Application extends Controller {
 			String loginResult = LoginManager.login(filledForm.get());
 			
 			if (loginResult.equals("logged in")) {
-				session("loggedin", filledForm.get().getUsername());
+				session("user", filledForm.get().getUsername());
 				return redirect(routes.Application.index());
 			}
 			else if (loginResult.equals("password invalid")) {
@@ -69,6 +73,43 @@ public class Application extends Controller {
 				return redirect(routes.Application.loginEntry());
 			}
 		}
-    }   
+    }  
+    
+    public static Result logout() {
+    	session().clear();
+    	return redirect(routes.Application.index());
+    }
+    
+    public static Result tripGuruEntry() {
+    	String user = session("user");
+    	String error = flash("error");
+    	String msg = flash("msg");
+    	return ok(tripguru.render(error, msg, user, tripguruForm));
+    }
+    
+    public static Result tripGuru() {
+    	Form<Query> filledForm = tripguruForm.bindFromRequest();
+    	String result = null;
+		if(filledForm.hasErrors())
+			return badRequest("Error while filling form");
+		else {
+			
+			if (session("user")!= null)
+				filledForm.get().setUsername(session("user"));
+			result = QueryManager.saveQuery(filledForm.get());
+		
+			if (result.equals("success"))
+				flash("msg", "Your query has been successfully posted");
+			else
+				flash("error", "Looks like the form was not properly filled, try again!");
+			
+			return redirect(routes.Application.tripGuruEntry());
+		}
+    }
+    
+    public static Result oldQA() {
+    	String user = session("user");
+    	return TODO;
+    }
   
 }

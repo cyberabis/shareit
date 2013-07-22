@@ -1,42 +1,30 @@
-@(error: String, signupForm: Form[User])
+@(error: String, user: String, signupForm: Form[User])
 
 @import helper._
 
-<!DOCTYPE html>
+@main("TRC - Sign-up")(user) {
 
-<html>
-    <head>
-        <title>Sign Up with ShareIt!</title>
-    </head>
-    <body>
-        
-        <h2>Sign Up</h2>
-    
-    	@form(routes.Application.signup()) {
-    	
-    	@if(error != null) {
-    		<h7>@error<h7/>
-    	}    		
-        
-        @inputText(signupForm("username"), '_label -> "User name") 
-        
-        @inputPassword(signupForm("password"), '_label -> "Password")
-        
-        @inputText(signupForm("firstName"), '_label -> "First Name")
-        
-        @inputText(signupForm("lastName"), '_label -> "Last Name")
-        
-        @inputText(signupForm("email"), '_label -> "Email Id")
-        
-        @inputText(signupForm("city"), '_label -> "City")
-        
-        @inputText(signupForm("country"), '_label -> "Country")
-        
-        @inputDate(signupForm("birthDate"), '_label -> "Birth Date", 'placeholder -> "yyyy-mm-dd")  
-        
-        <input type="submit" value="Sign Up">
-        
-    }
-        
-    </body>
-</html>
+	<br/><br/><br/>
+    <h4>Sign Up</h4>
+    <br/>
+
+	@form(routes.Application.signup()) {
+	
+		@if(error != null) {
+			<p class="text-error">@error</p>
+		}    		
+	    
+	    @inputText(signupForm("username"), '_label -> "User name") 
+	    @inputPassword(signupForm("password"), '_label -> "Password")
+	    @inputText(signupForm("firstName"), '_label -> "First Name")	    
+	    @inputText(signupForm("lastName"), '_label -> "Last Name")	    
+	    @inputText(signupForm("email"), '_label -> "Email Id")	    
+	    @inputText(signupForm("city"), '_label -> "City")	    
+	    @inputText(signupForm("country"), '_label -> "Country")	    
+	    @inputDate(signupForm("birthDate"), '_label -> "Birth Date", 'placeholder -> "yyyy-mm-dd")
+	    
+	    <input class="btn btn-info" type="submit" value="Sign Up">
+	    
+	}
+	
+}

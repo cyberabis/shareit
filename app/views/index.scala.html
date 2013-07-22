@@ -1,10 +1,10 @@
 @(user: String)
 
-@main("TRC - Home") {
+@main("TRC - Home")(user) {
     
      <div class="hero-unit">
 		    	<h1>THE ROAD CLUB</h1>
-			    <p>Welcome to THEROADCLUB.COM. A place to plan your road trips and record them. Let's go!</p>
+			    <p>Welcome to THEROADCLUB.COM. A place to plan your road trips and remember them. Let's go!</p>
 			    <p>
 			    	@if(user == null) {
 				    	<a class="btn btn-success btn-large" href="@routes.Application.loginEntry()">
@@ -12,6 +12,8 @@
 				    	</a>  or  <a class="btn btn-info btn-large" href="@routes.Application.signupEntry()">
 				    		Sign-up
 				    	</a>
+			    	} else { 
+			    		<h4>Hello @user!</h4>			    	
 			    	}
 			    </p>
 		    </div>
@@ -26,7 +28,7 @@
 		    	<li class="span4">
 		    			<center><img class="trc-thumbnail" src="@routes.Assets.at("images/plan.png")">
 		    			<h3>Plan Trips</h3> </center>
-		    			<p>Plan your trips better using TRC. Unlike blogs and forums, easily search for trips based on your needs.</p>
+		    			<p>Plan your trips better using TRC. Unlike blogs and forums, easily search for trips based on your needs. Also, our Trip Guru is always happy to help :)</p>
 		    	</li>
 		    	<li class="span4">
 		    			<center><img class="trc-thumbnail" src="@routes.Assets.at("images/share.png")">
