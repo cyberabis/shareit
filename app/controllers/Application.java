@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import play.data.*;
 import play.mvc.*;
 import processor.*;
@@ -109,7 +111,13 @@ public class Application extends Controller {
     
     public static Result oldQA() {
     	String user = session("user");
-    	return TODO;
+    	return ok(oldqa.render(user));
+    }
+    
+    public static Result editorial() {
+    	String user = session("user");
+    	List<Editorial> editorials = EditorialManager.getAllEditorials();
+    	return ok(editorial.render(user, editorials));
     }
   
 }

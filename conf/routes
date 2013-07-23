@@ -12,6 +12,7 @@ GET		/logout						controllers.Application.logout()
 GET		/tripguru					controllers.Application.tripGuruEntry()
 GET		/tripguru/oldQA				controllers.Application.oldQA()
 POST	/tripguru					controllers.Application.tripGuru()
+GET		/editorial					controllers.Application.editorial()
 
 
 GET		/share						controllers.ShareApplication.shareEntry()

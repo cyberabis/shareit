@@ -1,0 +1,20 @@
+@(user: String, editorials: List[Editorial])
+
+@main("TRC - Editorial")(user) {
+    
+    <br/><br/><br/>
+    <h4>Editor's Corner</h4>
+    <br/> 
+    
+    @if(editorials.size == 0) {
+    	<h5>No articles yet! But, coming really soon!</h5>
+    }
+    
+    <ul> 
+	@for(editorial <- editorials) {
+	  <li>@editorial.getTitle()</li>
+	} 
+	</ul>
+    
+    <br/>
+}
