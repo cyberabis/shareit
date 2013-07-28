@@ -13,12 +13,8 @@ GET		/tripguru					controllers.Application.tripGuruEntry()
 GET		/tripguru/oldQA				controllers.Application.oldQA()
 POST	/tripguru					controllers.Application.tripGuru()
 GET		/editorial					controllers.Application.editorial()
-
-
-GET		/share						controllers.ShareApplication.shareEntry()
-POST	/share						controllers.ShareApplication.share()
-GET		/viewshare					controllers.ShareApplication.viewShareEntry()
-POST	/viewshare					controllers.ShareApplication.viewShare()
+GET		/editorial/entry			controllers.Application.editorialEntry()
+POST	/editorial/entry			controllers.Application.submitEditorial()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

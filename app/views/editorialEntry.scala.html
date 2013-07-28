@@ -1,0 +1,33 @@
+@(error: String, msg: String, user: String, editorialEntryForm: Form[Editorial])
+
+@import helper._
+
+@main("TRC - Editorial Entry")(user) {
+    
+    <br/><br/><br/>
+    <h4>Editorial Entry</h4>
+    <br/> 
+    
+	@form(routes.Application.submitEditorial()) {
+	
+		    @if(error != null) {
+	    		<p class="text-error">@error</p>
+	    	}    
+	    	@if(msg != null) {
+	    		<p class="text-success">@msg</p>
+	    	}  
+    	     
+	        @inputText(editorialEntryForm("title"), '_label -> "Title", 'class->"input-xxlarge") 
+	        
+	        @inputText(editorialEntryForm("pictureUrl"), '_label -> "Picture Url", 'class->"input-xxlarge") 
+	        
+	        @inputText(editorialEntryForm("videoUrl"), '_label -> "Video Url", 'class->"input-xxlarge") 
+	        
+	        @textarea(field = editorialEntryForm("article"), args = 'rows -> 10, 'cols -> 100, '_label -> "Your article", 'class->"input-xxlarge")
+	        
+	        <input class="btn btn-success" type="submit" value="Submit">
+        
+    }
+    
+    <br/>
+}

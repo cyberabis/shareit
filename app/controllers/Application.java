@@ -15,6 +15,7 @@ public class Application extends Controller {
 	static Form<User> signupForm = Form.form(User.class);
 	static Form<User> loginForm = Form.form(User.class);
 	static Form<Query> tripguruForm = Form.form(Query.class);
+	static Form<Editorial> editorialEntryForm = Form.form(Editorial.class);
 	
     public static Result index() {
     	String user = session("user");
@@ -118,6 +119,25 @@ public class Application extends Controller {
     	String user = session("user");
     	List<Editorial> editorials = EditorialManager.getAllEditorials();
     	return ok(editorial.render(user, editorials));
+    }
+    
+    public static Result editorialEntry() {
+    	String user = session("user");
+    	String error = flash("error");
+    	String msg = flash("msg");
+    	return ok(editorialEntry.render(error, msg, user, editorialEntryForm));
+    }
+    
+    public static Result submitEditorial() {
+    	Form<Editorial> filledForm = editorialEntryForm.bindFromRequest();
+    	filledForm.get().setAuthor(session("user"));
+    	String result = EditorialManager.saveEditorial(filledForm.get());
+    	if ((result != null) && (result.equals("saved")))
+    		flash("msg", "Your editorial has been successfully saved");
+    	else
+    		flash("error", "Something went wrong! Please try again");
+    	
+    	return redirect(routes.Application.editorialEntry());
     }
   
 }

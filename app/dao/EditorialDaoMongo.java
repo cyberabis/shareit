@@ -43,10 +43,9 @@ public class EditorialDaoMongo implements EditorialDao {
 		List<Editorial> editorials = new ArrayList<Editorial>();
 		DB db = DaoMongo.connect();
 		DBCollection coll = db.getCollection("editorial");		
-		BasicDBObject searchQuery = new BasicDBObject();
-		DBCursor cursor = coll.find(searchQuery);
+		DBCursor cursor = coll.find();
 	 
-		if (cursor.hasNext()) {
+		while (cursor.hasNext()) {
 			BasicDBObject doc = (BasicDBObject) cursor.next();
 			Editorial editorial = new Editorial();
 			editorial.setArticle(doc.getString("article"));
@@ -60,6 +59,25 @@ public class EditorialDaoMongo implements EditorialDao {
 		}	
 		
 		return editorials;
+	}
+
+	@Override
+	public boolean saveEditorial(Editorial editorial) {
+		DB db = DaoMongo.connect();
+		
+		int nextEditorialId = MongoDaoUtil.getnextUniqueId("EditorialId");
+		editorial.setArticleId(nextEditorialId);
+		
+		DBCollection coll = db.getCollection("editorial");
+		BasicDBObject doc = new BasicDBObject("articleId", editorial.getArticleId()).
+                append("title", editorial.getTitle()).
+                append("article", editorial.getArticle()).
+                append("author", editorial.getAuthor()).
+                append("createDate", editorial.getCreateDate()).
+                append("pictureUrl", editorial.getPictureUrl()).
+                append("videoUrl", editorial.getVideoUrl());
+		coll.insert(doc);		
+		return true;
 	}
 
 }

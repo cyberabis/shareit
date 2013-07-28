@@ -21,7 +21,7 @@
 	        	@inputText(tripguruForm("guestname"), '_label -> "Your name") 
 	        	@inputText(tripguruForm("guestEmail"), '_label -> "Your Email ID") 
 	        }	        
-	        @textarea(field = tripguruForm("question"), args = 'rows -> 4, 'cols -> 100, 'placeholder -> "Type your query here", '_label -> "Query")
+	        @textarea(field = tripguruForm("question"), args = 'rows -> 4, 'cols -> 100, 'placeholder -> "Type your query here", '_label -> "Query", 'class->"input-xxlarge")
 	        @checkbox(field = tripguruForm("makePublic"), '_label -> "Make Public", '_value -> "Y") 
 	        <br/>   
 	        <input class="btn btn-success" type="submit" value="Submit Query">

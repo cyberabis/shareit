@@ -10,11 +10,13 @@
     	<h5>No articles yet! But, coming really soon!</h5>
     }
     
-    <ul> 
 	@for(editorial <- editorials) {
-	  <li>@editorial.getTitle()</li>
+	  <h5>@editorial.getTitle()</h5>
+	  @if(editorial.getPictureUrl != null) {
+	  	<center><img src=@editorial.getPictureUrl /></center>
+	  }
+	  <p>@Html(editorial.getArticle().replace("\r\n", "<br/>"))</p>
+	  <hr/>
 	} 
-	</ul>
     
-    <br/>
 }

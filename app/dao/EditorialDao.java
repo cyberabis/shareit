@@ -9,5 +9,7 @@ public interface EditorialDao {
 	public Editorial findEditorial(int articleId);
 	
 	public List<Editorial> findAllEditorials();
+	
+	public boolean saveEditorial(Editorial editorial);
 
 }
