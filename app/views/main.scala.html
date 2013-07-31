@@ -25,7 +25,7 @@
 						@if(user.equals("editor")) {
 							<li @if(title.equals("TRC - Editorial Entry")){class="active"}><a href="@routes.Application.editorialEntry()">Write Editorial</a></li>
 						}
-						<li @if(title.equals("TRC - My Account")){class="active"}><a href="#">My Account</a></li>
+						<li @if(title.equals("TRC - My Account")){class="active"}><a href="@routes.Application.myAccount()">My Account</a></li>
 						<li @if(title.equals("TRC - Logout")){class="active"}><a href="@routes.Application.logout()">Logout</a></li>
 					} else {
 						<li @if(title.equals("TRC - Login")){class="active"}><a href="@routes.Application.loginEntry()">Login</a></li>

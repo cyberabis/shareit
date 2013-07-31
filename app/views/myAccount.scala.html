@@ -1,0 +1,36 @@
+@(error: String, msg: String, user: User)
+
+@main("TRC - My Account")(user.getUsername()) {
+    
+    <br/><br/><br/>
+    <h4>My Account</h4>
+    <br/> 
+    
+	@if(error != null) {
+		<p class="text-error">@error</p>
+	}    
+	@if(msg != null) {
+		<p class="text-success">@msg</p>
+	}
+	
+	<h5>Your details</h5>
+		<table class="table">
+			<tr>
+			  <td>User Name</td>
+			  <td>@user.getUsername()</td>
+			</tr>
+			<tr>
+			  <td>First Name</td>
+			  <td>@user.getFirstName()</td>
+			</tr>
+			<tr>
+			  <td>Last Name</td>
+			  <td>@user.getLastName()</td>
+			</tr>
+			<tr>
+			  <td>Email Id</td>
+			  <td>@user.getEmail()</td>
+			</tr>
+		</table>
+		    
+}

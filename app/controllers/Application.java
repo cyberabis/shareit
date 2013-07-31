@@ -139,5 +139,13 @@ public class Application extends Controller {
     	
     	return redirect(routes.Application.editorialEntry());
     }
+    
+    public static Result myAccount() {
+    	String username = session("user");
+    	String error = flash("error");
+    	String msg = flash("msg");
+    	User user = MyAccountManager.getUser(username);
+    	return ok(myAccount.render(error, msg, user));
+    }
   
 }
