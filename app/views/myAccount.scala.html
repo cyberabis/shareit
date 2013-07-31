@@ -1,5 +1,7 @@
 @(error: String, msg: String, user: User)
 
+@import helper._
+
 @main("TRC - My Account")(user.getUsername()) {
     
     <br/><br/><br/>
@@ -13,7 +15,20 @@
 		<p class="text-success">@msg</p>
 	}
 	
-	<h5>Your details</h5>
+	<h5>Profile Picture</h5>
+	@if((user.getProfilePictureUrl()==null)||(user.getProfilePictureUrl().equals(""))) {
+		<p class="text-warning">No picture uploaded!</p>
+	} else {
+		<img src= "@user.getProfilePictureUrl()" class="img-rounded">
+	}
+	@form(action = routes.Application.uploadProfilePic, 'enctype -> "multipart/form-data") {    
+    Select a new profile picture <input type="file" name="picture">    
+    <p><input class="btn btn-info" type="submit" value="Upload"></p>    
+	}
+	
+	<br/>
+	
+	<h5>User details</h5>
 		<table class="table">
 			<tr>
 			  <td>User Name</td>
@@ -30,6 +45,10 @@
 			<tr>
 			  <td>Email Id</td>
 			  <td>@user.getEmail()</td>
+			</tr>
+			<tr>
+			  <td>TRC miles</td>
+			  <td>@user.getMiles()</td>
 			</tr>
 		</table>
 		    

@@ -15,7 +15,8 @@ POST	/tripguru					controllers.Application.tripGuru()
 GET		/editorial					controllers.Application.editorial()
 GET		/editorial/entry			controllers.Application.editorialEntry()
 POST	/editorial/entry			controllers.Application.submitEditorial()
-GET		/myaccount					controllers.Application.myAccount()
+GET		/myAccount					controllers.Application.myAccount()
+POST	/uploadProfilePic			controllers.Application.uploadProfilePic()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

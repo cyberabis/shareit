@@ -147,5 +147,11 @@ public class Application extends Controller {
     	User user = MyAccountManager.getUser(username);
     	return ok(myAccount.render(error, msg, user));
     }
+    
+    public static Result uploadProfilePic() {
+    	//TODO
+    	//Upload photo and then...
+    	return redirect(routes.Application.myAccount());
+    }
   
 }

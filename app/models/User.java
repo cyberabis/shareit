@@ -12,7 +12,21 @@ public class User {
 	private String city;
 	private String country;
 	private Date birthDate;
+	private String profilePictureUrl;
+	private int miles;
 	
+	public int getMiles() {
+		return miles;
+	}
+	public void setMiles(int miles) {
+		this.miles = miles;
+	}
+	public String getProfilePictureUrl() {
+		return profilePictureUrl;
+	}
+	public void setProfilePictureUrl(String profilePictureUrl) {
+		this.profilePictureUrl = profilePictureUrl;
+	}
 	public String getUsername() {
 		return username;
 	}
