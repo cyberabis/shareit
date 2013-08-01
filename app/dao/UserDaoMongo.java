@@ -37,7 +37,30 @@ public class UserDaoMongo implements UserDao {
 	public boolean saveUser(User user) {		
 		DB db = DaoMongo.connect();
 		DBCollection coll = db.getCollection("user");
-		BasicDBObject doc = new BasicDBObject("username", user.getUsername()).
+		BasicDBObject doc = createUserDocument(user);
+		coll.insert(doc);
+		return true;
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		DB db = DaoMongo.connect();
+		DBCollection coll = db.getCollection("user");
+		BasicDBObject doc = createUserDocument(user);
+		BasicDBObject searchQuery = new BasicDBObject();
+		searchQuery.put("username", user.getUsername());	 
+		coll.update(searchQuery, doc);
+		return true;
+	}
+
+	@Override
+	public boolean deleteUser(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	private BasicDBObject createUserDocument(User user) {
+		return new BasicDBObject("username", user.getUsername()).
                 append("password", user.getPassword()).
                 append("firstName", user.getFirstName()).
                 append("lastName", user.getLastName()).
@@ -47,20 +70,6 @@ public class UserDaoMongo implements UserDao {
                 append("birthDate", user.getBirthDate()).
 				append("profilePictureUrl", user.getProfilePictureUrl()).
 				append("miles", user.getMiles());
-		coll.insert(doc);
-		return true;
-	}
-
-	@Override
-	public boolean updateUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean deleteUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

@@ -14,7 +14,7 @@ public class DaoMongo {
 			Mongo mongo = new Mongo("ds037478.mongolab.com",37478);
 			//db = mongo.getDB("shareit");
 			db = mongo.getDB("trc");
-			boolean auth = db.authenticate("trcuser", "trcpass".toCharArray());
+			db.authenticate("trcuser", "trcpass".toCharArray());
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 	    } catch (MongoException e) {
