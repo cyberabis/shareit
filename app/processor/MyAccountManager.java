@@ -22,9 +22,12 @@ public class MyAccountManager {
 		boolean result = false;
 		Cloudinary cloudinary = new Cloudinary("cloudinary://851169366924174:FMRfm8KdbatTRSBkxA-tTFCMSVw@db4meqdaj");
 		try {
-			Map response = cloudinary.uploader().upload(file, Cloudinary.emptyMap());			
 			User user = getUser(username);
-			System.out.println("Cloudinary URL: " + (String)response.get("url"));
+			String oldProfilePicUrl = user.getProfilePictureUrl();
+			String[] parts = oldProfilePicUrl.split("/");
+			String publicId = parts[parts.length - 1].split("\\.")[0];
+			cloudinary.uploader().destroy(publicId, Cloudinary.emptyMap());
+			Map response = cloudinary.uploader().upload(file, Cloudinary.emptyMap());			
 			user.setProfilePictureUrl((String)response.get("url"));
 			UserDao userDao = new UserDaoMongo();
 			result = userDao.updateUser(user);					

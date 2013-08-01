@@ -6,7 +6,7 @@
     
     <br/><br/><br/>
     <h4>My Account</h4>
-    <br/> 
+    <hr/> 
     
 	@if(error != null) {
 		<p class="text-error">@error</p>
@@ -26,10 +26,10 @@
     <p><input class="btn btn-info" type="submit" value="Upload"></p>    
 	}
 	
-	<br/>
+	<hr/>
 	
 	<h5>User details</h5>
-		<table class="table">
+		<table class="table table-bordered table-striped">
 			<tr>
 			  <td>User Name</td>
 			  <td>@user.getUsername()</td>
