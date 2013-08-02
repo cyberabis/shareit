@@ -32,7 +32,7 @@ public class MyAccountManager {
 			}			
 			//Upload after resizing
 			Transformation transformation = new Transformation();
-			transformation.crop("thumb").height(180).radius(10);
+			transformation.gravity("faces:center").crop("thumb").height(180).width(100).radius(5);
 			Map response = cloudinary.uploader().upload(file, Cloudinary.asMap("transformation", transformation));			
 			user.setProfilePictureUrl((String)response.get("url"));
 			UserDao userDao = new UserDaoMongo();
