@@ -1,4 +1,4 @@
-@(error: String, msg: String, user: String, editorialEntryForm: Form[Editorial])
+@(error: String, msg: String, user: String, editorialForm: Form[Editorial])
 
 @import helper._
 
@@ -17,13 +17,13 @@
 	    		<p class="text-success">@msg</p>
 	    	}  
     	     
-	        @inputText(editorialEntryForm("title"), '_label -> "Title", 'class->"input-xxlarge") 
+	        @inputText(editorialForm("title"), '_label -> "Title", 'class->"input-xxlarge") 
 	        
-	        @inputText(editorialEntryForm("pictureUrl"), '_label -> "Picture Url", 'class->"input-xxlarge") 
+	        @inputText(editorialForm("pictureUrl"), '_label -> "Picture Url", 'class->"input-xxlarge") 
 	        
-	        @inputText(editorialEntryForm("videoUrl"), '_label -> "Video Url", 'class->"input-xxlarge") 
+	        @inputText(editorialForm("videoUrl"), '_label -> "Video Url", 'class->"input-xxlarge") 
 	        
-	        @textarea(field = editorialEntryForm("article"), args = 'rows -> 10, 'cols -> 100, '_label -> "Your article", 'class->"input-xxlarge")
+	        @textarea(field = editorialForm("article"), args = 'rows -> 10, 'cols -> 100, '_label -> "Your article", 'class->"input-xxlarge")
 	        
 	        <input class="btn btn-success" type="submit" value="Submit">
         

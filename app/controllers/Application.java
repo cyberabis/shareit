@@ -18,8 +18,9 @@ public class Application extends Controller {
 	static Form<User> signupForm = Form.form(User.class);
 	static Form<User> loginForm = Form.form(User.class);
 	static Form<Query> tripguruForm = Form.form(Query.class);
-	static Form<Editorial> editorialEntryForm = Form.form(Editorial.class);
-
+	static Form<Editorial> editorialForm = Form.form(Editorial.class);
+	static Form<Trip> tripForm = Form.form(Trip.class);
+	
 	public static Result index() {
 		String user = session("user");
 		return ok(index.render(user));
@@ -125,11 +126,11 @@ public class Application extends Controller {
 		String user = session("user");
 		String error = flash("error");
 		String msg = flash("msg");
-		return ok(editorialEntry.render(error, msg, user, editorialEntryForm));
+		return ok(editorialEntry.render(error, msg, user, editorialForm));
 	}
 
 	public static Result submitEditorial() {
-		Form<Editorial> filledForm = editorialEntryForm.bindFromRequest();
+		Form<Editorial> filledForm = editorialForm.bindFromRequest();
 		filledForm.get().setAuthor(session("user"));
 		String result = EditorialManager.saveEditorial(filledForm.get());
 		if ((result != null) && (result.equals("saved")))
@@ -162,6 +163,17 @@ public class Application extends Controller {
 			flash("error", "Profile picture upload failed.");
 		}
 		return redirect(routes.Application.myAccount());
+	}
+	
+	public static Result tripEntry() {
+		String username = session("user");
+		String error = flash("error");
+		return ok(tripEntry.render(error, username, tripForm));
+	}
+	
+	public static Result trip() {
+		//TODO
+		return TODO;
 	}
 
 }

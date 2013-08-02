@@ -1,0 +1,28 @@
+@(error: String, user: String, tripForm: Form[Trip])
+
+@import helper._
+
+@main("TRC - Log your Trip")(user) {
+    
+    <br/><br/><br/>
+    <h4>Log your Trip</h4>
+    <hr/> 
+    
+	@form(routes.Application.trip()) {
+	
+		    @if(error != null) {
+	    		<p class="text-error">@error</p>
+	    	}    
+    	     
+	        @inputText(tripForm("origin"), '_label -> "Started trip from") 
+	        
+	        @inputText(tripForm("title"), '_label -> "Title", 'class->"input-xxlarge") 
+	        
+	        @textarea(field = tripForm("details"), args = 'rows -> 10, 'cols -> 100, '_label -> "Share your experience", 'class->"input-xxlarge")
+	        
+	        <input class="btn btn-success" type="submit" value="Submit">
+        
+    }
+    
+    <br/>
+}
