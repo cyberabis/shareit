@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.cloudinary.Cloudinary;
+import com.cloudinary.Transformation;
 
 import models.User;
 import dao.UserDao;
@@ -24,10 +25,15 @@ public class MyAccountManager {
 		try {
 			User user = getUser(username);
 			String oldProfilePicUrl = user.getProfilePictureUrl();
-			String[] parts = oldProfilePicUrl.split("/");
-			String publicId = parts[parts.length - 1].split("\\.")[0];
-			cloudinary.uploader().destroy(publicId, Cloudinary.emptyMap());
-			Map response = cloudinary.uploader().upload(file, Cloudinary.emptyMap());			
+			if ((oldProfilePicUrl!=null)&&(!oldProfilePicUrl.equals(""))) {
+				String[] parts = oldProfilePicUrl.split("/");
+				String publicId = parts[parts.length - 1].split("\\.")[0];
+				cloudinary.uploader().destroy(publicId, Cloudinary.emptyMap());
+			}			
+			//Upload after resizing
+			Transformation transformation = new Transformation();
+			transformation.crop("thumb").height(180).radius(10);
+			Map response = cloudinary.uploader().upload(file, Cloudinary.asMap("transformation", transformation));			
 			user.setProfilePictureUrl((String)response.get("url"));
 			UserDao userDao = new UserDaoMongo();
 			result = userDao.updateUser(user);					
