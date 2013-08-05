@@ -12,16 +12,36 @@
 	
 		    @if(error != null) {
 	    		<p class="text-error">@error</p>
-	    	}    
-    	     
-	        @inputText(tripForm("origin"), '_label -> "Started trip from") 
+	    	}
+	    	
+	    	<div class="row">
+			    <div class="span4">
+			    	@inputText(tripForm("origin"), '_label -> "Started trip from") 
+			        
+			        @select(field = tripForm("month"), options = options(("--Choose--","--Choose--"),("Jan","Jan"),("Feb","Feb"),("Mar","Mar"),("Apr","Apr"),("May","May"),("Jun","Jun"),("Jul","Jul"),("Aug","Aug"),("Sep","Sep"),("Oct","Oct"),("Nov","Nov"),("Dec","Dec")), '_label -> "Traveled on the month of")
+			        
+			        @select(field = tripForm("year"), options = options(("--Choose--","--Choose--"),("2012","2012"),("2013","2013")), '_label -> "Traveled in year")
+			        
+			        @select(field = tripForm("vehicleType"), options = options(("--Choose--","--Choose--"),("Hatch-back","Hatch-back"),("Sedan","Sedan"), ("SUV/Jeep","SUV/Jeep"),("Bike","Bike")), '_label -> "Vehicle Type")
+			    </div>
+			    <div class="span8">
+			    
+			    	@inputText(tripForm("destination[0]"), '_label -> "Destination") 
+			        
+			        @inputText(tripForm("destination[1]"), '_label -> "Second Destination") 
+			        
+			        @inputText(tripForm("destination[2]"), '_label -> "Third Destination") 
+	        
+	        		@inputText(tripForm("vehicle"), '_label -> "Vehicle") 
+			    </div>
+		    </div>       
 	        
 	        @inputText(tripForm("title"), '_label -> "Title", 'class->"input-xxlarge") 
 	        
 	        @textarea(field = tripForm("details"), args = 'rows -> 10, 'cols -> 100, '_label -> "Share your experience", 'class->"input-xxlarge")
 	        
-	        <input class="btn btn-success" type="submit" value="Submit">
-        
+	        You can add pictures after <input class="btn btn-success" type="submit" value="Submit">
+			        
     }
     
     <br/>

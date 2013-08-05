@@ -1,12 +1,11 @@
 package models;
 
 import java.util.List;
-import java.util.Map;
 
 public class Trip {
 	
 	private String origin;
-	private Map<Integer,String> destination;
+	private List<String> destination;
 	private String month;
 	private String year;
 	private String vehicleType;
@@ -15,6 +14,7 @@ public class Trip {
 	private String title;
 	private String details;
 	private List<String> photoUrls;
+	private List<String> friends;
 	
 	public String getOrigin() {
 		return origin;
@@ -22,11 +22,18 @@ public class Trip {
 	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
-	public Map<Integer, String> getDestination() {
+	
+	public List<String> getDestination() {
 		return destination;
 	}
-	public void setDestination(Map<Integer, String> destination) {
+	public void setDestination(List<String> destination) {
 		this.destination = destination;
+	}
+	public List<String> getFriends() {
+		return friends;
+	}
+	public void setFriends(List<String> friends) {
+		this.friends = friends;
 	}
 	public String getMonth() {
 		return month;
