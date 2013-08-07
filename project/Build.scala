@@ -11,6 +11,7 @@ object ApplicationBuild extends Build {
     // Add your project dependencies here,
     "org.mongodb" % "mongo-java-driver" % "2.9.3",
     "com.cloudinary" % "cloudinary" % "1.0.4",
+    "com.google.code.gson" % "gson" % "2.2",
     javaCore,
     javaJdbc,
     javaEbean
