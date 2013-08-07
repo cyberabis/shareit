@@ -18,6 +18,7 @@
 					<li @if(title.equals("TRC - Home")){class="active"}><a href="@routes.Application.index()">Home</a></li>
 					<li @if(title.equals("TRC - Search Trips")){class="active"}><a href="#">Search Trips</a></li>
 					<li @if(title.equals("TRC - Log your Trip")){class="active"}><a href="@routes.Application.tripEntry()">Log your Trip</a></li>
+					<li @if(title.equals("TRC - Places")){class="active"}><a href="#">Places</a></li>
 					<li @if(title.equals("TRC - Ask Trip Guru")){class="active"}><a href="@routes.Application.tripGuru()">Ask Trip Guru</a></li>
 					<li @if(title.equals("TRC - Editorial")){class="active"}><a href="@routes.Application.editorial()">Editor's Corner</a></li>
 					@if(user != null) {
@@ -47,7 +48,7 @@
 		    <div class="navbar navbar-fixed-bottom navbar-inverse">
 		    	<div class="navbar-inner">
 						<ul class="nav">
-							<li><a href="#">A Watermelon Labs Product</a></li>
+							<li><a href="@routes.Application.index()">TRC | A Watermelon Labs Product</a></li>
 						</ul>
 				</div>
 		    </div>
