@@ -26,3 +26,4 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 # Map Bootstrap images
 GET     /assets/img/glyphicons-halflings.png            controllers.Assets.at(path="/public", file="/images/glyphicons-halflings.png")
 GET     /assets/img/glyphicons-halflings-white.png      controllers.Assets.at(path="/public", file="/images/glyphicons-halflings-white.png")
+GET     /assets/img/road_hu.jpg      						controllers.Assets.at(path="/public", file="/images/road_hu.jpg")

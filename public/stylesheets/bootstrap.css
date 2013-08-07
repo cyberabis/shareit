@@ -6123,8 +6123,9 @@ a.badge:focus {
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
-  color: inherit;
-  background-color: #eeeeee;
+  color: #FFF8DC;
+  background-image: url("http://res.cloudinary.com/db4meqdaj/image/upload/v1375885397/road_hu_geuvrh.jpg");
+  background-size:cover;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
