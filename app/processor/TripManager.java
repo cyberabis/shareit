@@ -1,6 +1,6 @@
 package processor;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -9,27 +9,21 @@ import models.Trip;
 
 public class TripManager {
 	
+	private static final List<String> places = Arrays.asList("Chennai", "Bangalore", "Hyderabad", "Mumbai", "Delhi");
+	
 	public static boolean saveTrip(Trip trip) {
 		//TODO
 		return false;
 	}
 	
-	public static List<String> getCities() {
-		List<String> cities = new ArrayList<String>();
-		//TODO
-		cities.add("Bangalore");
-		cities.add("Delhi");
-		cities.add("Mumbai");
-		cities.add("Chennai");
-		return cities;
+	public static List<String> getPlaces() {
+		return places;
 	}
 	
-	public static String getCitiesAsJson() {
-		String jsonCities = null;
-		
-		jsonCities = new Gson().toJson(getCities());
-		System.out.println("JsonCities: " + jsonCities);
-		return jsonCities;
+	public static String getPlacesAsJson() {
+		String jsonPlaces = null;
+		jsonPlaces = new Gson().toJson(getPlaces());
+		return jsonPlaces;
 	}
 	
 	

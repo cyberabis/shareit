@@ -14,14 +14,23 @@
 			<p class="text-error">@error</p>
 		}    		
 	    
-	    @inputText(signupForm("username"), '_label -> "User name") 
-	    @inputPassword(signupForm("password"), '_label -> "Password")
-	    @inputText(signupForm("firstName"), '_label -> "First Name")	    
-	    @inputText(signupForm("lastName"), '_label -> "Last Name")	    
-	    @inputText(signupForm("email"), '_label -> "Email Id")	    
-	    @inputText(signupForm("city"), '_label -> "City")	    
-	    @inputText(signupForm("country"), '_label -> "Country")	    
-	    @inputDate(signupForm("birthDate"), '_label -> "Birth Date", 'placeholder -> "yyyy-mm-dd")
+	    <div class="row">
+	    	<div class = "span4">
+			    @inputText(signupForm("username"), '_label -> "User name") 
+			    @inputPassword(signupForm("password"), '_label -> "Password")
+			    @inputText(signupForm("firstName"), '_label -> "First Name")	    
+			    @inputText(signupForm("lastName"), '_label -> "Last Name")	
+			 </div>
+			 <div class = "span4">    
+			    @inputText(signupForm("email"), '_label -> "Email Id")	    
+			    @inputText(signupForm("city"), '_label -> "City")	    
+			    @inputText(signupForm("country"), '_label -> "Country")	    
+			    @inputDate(signupForm("birthDate"), '_label -> "Birth Date", 'placeholder -> "yyyy-mm-dd")
+	    	</div>
+	    	<div class = "span4">
+	    		@* <img src="@routes.Assets.at("images/firststep.jpg")" *@
+	    	</div>
+	    </div>
 	    
 	    <input class="btn btn-info" type="submit" value="Sign Up">
 	    

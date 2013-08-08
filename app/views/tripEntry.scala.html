@@ -1,4 +1,4 @@
-@(error: String, user: String, tripForm: Form[Trip])
+@(error: String, user: String, jsonPlaces: String, tripForm: Form[Trip])
 
 @import helper._
 
@@ -18,7 +18,7 @@
 			    <div class="span4">
 			    	
 			    	@helper.input(tripForm("origin"), '_label -> "Origin") { (id, name, value, args) =>
-    					<input type="text" name="@name" id="@id" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]' @toHtmlArgs(args)>
+    					<input type="text" name="@name" id="@id" data-provide="typeahead" data-items="4" data-source='@jsonPlaces' @toHtmlArgs(args)>
 					} 
 			        
 			        @select(field = tripForm("month"), options = options(("--Choose--","--Choose--"),("Jan","Jan"),("Feb","Feb"),("Mar","Mar"),("Apr","Apr"),("May","May"),("Jun","Jun"),("Jul","Jul"),("Aug","Aug"),("Sep","Sep"),("Oct","Oct"),("Nov","Nov"),("Dec","Dec")), '_label -> "Traveled on the month of")

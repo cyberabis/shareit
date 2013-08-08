@@ -20,6 +20,9 @@ POST	/uploadProfilePic			controllers.Application.uploadProfilePic()
 GET		/logTrip					controllers.Application.tripEntry()
 POST	/logTrip					controllers.Application.trip()
 
+# For Facebook login
+GET 	/channel.html				controllers.Assets.at(path="/public", file="html/channel.html")
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

@@ -168,7 +168,8 @@ public class Application extends Controller {
 	public static Result tripEntry() {
 		String username = session("user");
 		String error = flash("error");
-		return ok(tripEntry.render(error, username, tripForm));
+		String jsonPlaces = TripManager.getPlacesAsJson();
+		return ok(tripEntry.render(error, username, jsonPlaces, tripForm));
 	}
 	
 	public static Result trip() {
