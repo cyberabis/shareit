@@ -16,16 +16,32 @@
 	    	}    
 	    	@if(msg != null) {
 	    		<p class="text-success">@msg</p>
-	    	}  			        
-	        @if(user == null) {
-	        	@inputText(tripguruForm("guestname"), '_label -> "Your name") 
-	        	@inputText(tripguruForm("guestEmail"), '_label -> "Your Email ID") 
-	        }	        
-	        @textarea(field = tripguruForm("question"), args = 'rows -> 4, 'cols -> 100, 'placeholder -> "Type your query here", '_label -> "Query", 'class->"input-xxlarge")
-	        @checkbox(field = tripguruForm("makePublic"), '_label -> "Make Public", '_value -> "Y") 
-	        <br/>   
-	        <input class="btn btn-success" type="submit" value="Submit Query">
-        
+	    	}  			       
+	    	
+	    	<div class="row">
+	    		<div class="span8">
+	    			@if(user == null) {
+			        	@inputText(tripguruForm("guestname"), '_label -> "Your name") 
+			        	@inputText(tripguruForm("guestEmail"), '_label -> "Your Email ID") 
+			        }	        
+			        @textarea(field = tripguruForm("question"), args = 'rows -> 4, 'cols -> 100, 'placeholder -> "Type your query here", '_label -> "Query", 'class->"input-xxlarge")
+			        @checkbox(field = tripguruForm("makePublic"), '_label -> "Make Public", '_value -> "Y") 
+			        <br/>   
+			        <input class="btn btn-success" type="submit" value="Submit Query">
+	    		</div>
+	    		<div class="span4">
+	    			<script type="text/javascript"><!--
+					google_ad_client = "ca-pub-8867292402158435";
+					/* trcsqr */
+					google_ad_slot = "1929526058";
+					google_ad_width = 250;
+					google_ad_height = 250;
+					//-->
+					</script>
+					<script type="text/javascript"
+					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+					</script>
+	    		</div>
+	    	</div>        
     	} 
-    
 }
