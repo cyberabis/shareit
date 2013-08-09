@@ -19,8 +19,9 @@
       // The response object is returned with a status field that lets the app know the current
       // login status of the person. In this case, we're handling the situation where they 
       // have logged in to the app.
-      testAPI();
-      setSession(response.authResponse.userID);
+      if (document.title == 'TRC - Login') {
+      	setSession();
+      }
     } else if (response.status === 'not_authorized') {
       // In this case, the person is logged into Facebook, but not into the app, so we call
       // FB.login() to prompt them to do so. 
@@ -60,12 +61,15 @@
   }
   
   function setSession(userId) {
-	if (document.title == 'TRC - Login') {
-		console.log('This is a login form');
-		document.getElementById('username').value = userId;
-		document.getElementById('userType').value = 'fb';
-		document.forms["loginf"].submit();
-	}
+	FB.api('/me', function(response) {
+    });
+	document.getElementById('username').value = response.username;
+	document.getElementById('userType').value = 'fb';
+	document.getElementById('firstName').value = response.first_name;
+	document.getElementById('lastName').value = response.last_name;
+	document.getElementById('gender').value = response.gender;
+	document.getElementById('email').value = response.email;
+	document.forms["loginf"].submit();
   }
 
 //For Like
