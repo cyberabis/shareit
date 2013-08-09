@@ -20,11 +20,11 @@
 	        		@inputText(loginForm("username"), '_label -> "Your Username", 'placeholder -> "Username") 
 	        		@inputPassword(loginForm("password"), '_label -> "Your Password", 'placeholder -> "Password")
 	        		
-	        		<input type="hidden" name="userType" value="@loginForm.data.get("userType")"/>
-	        		<input type="hidden" name="firstName" value="@loginForm.data.get("firstName")"/>
-	        		<input type="hidden" name="lastName" value="@loginForm.data.get("lastName")"/>
-	        		<input type="hidden" name="email" value="@loginForm.data.get("email")"/>
-	        		<input type="hidden" name="gender" value="@loginForm.data.get("gender")"/>
+	        		<input type="hidden" name="userType" id="userType" value="@loginForm.data.get("userType")"/>
+	        		<input type="hidden" name="firstName" id="firstName" value="@loginForm.data.get("firstName")"/>
+	        		<input type="hidden" name="lastName" id="lastName" value="@loginForm.data.get("lastName")"/>
+	        		<input type="hidden" name="email" id="email" value="@loginForm.data.get("email")"/>
+	        		<input type="hidden" name="gender" id="gender" value="@loginForm.data.get("gender")"/>
 	        		
 	        		<input class="btn btn-success" type="submit" value="Login">
 	        	</div>
