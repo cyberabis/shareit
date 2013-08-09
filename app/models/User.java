@@ -14,7 +14,14 @@ public class User {
 	private Date birthDate;
 	private String profilePictureUrl;
 	private int miles;
+	private String gender;
 	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public int getMiles() {
 		return miles;
 	}

@@ -76,7 +76,7 @@
 		    <br/>		    
     		<div class="row">
     			<div class="span8">
-					<script type="text/javascript"><!--
+					@* <script type="text/javascript"><!--
 					google_ad_client = "ca-pub-8867292402158435";
 					/* trc_ad2 */
 					google_ad_slot = "2987456856";
@@ -86,7 +86,7 @@
 					</script>
 					<script type="text/javascript"
 					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-					</script>
+					</script> *@
     			</div>
     			<div class="span4">
     				<img src="@routes.Assets.at("images/trc_logo_min.jpg")" align="right">
@@ -97,9 +97,12 @@
 		    
 		    <div class="navbar navbar-fixed-bottom navbar-inverse">
 		    	<div class="navbar-inner">
-						<ul class="nav">
-							<li><a href="@routes.Application.index()">TRC | from Watermelon Labs </a></li>
-						</ul>
+		    			<small>
+							<ul class="nav">
+								<li><a href="@routes.Application.index()">TRC | from Watermelon Labs</a></li>
+								<li><a href="@routes.Application.contactUs()">Contact Us</a></li>
+							</ul>
+						</small>
 				</div>
 		    </div>
 	    	

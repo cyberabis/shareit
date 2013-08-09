@@ -176,5 +176,10 @@ public class Application extends Controller {
 		//TODO
 		return TODO;
 	}
+	
+	public static Result contactUs() {
+		String username = session("user");
+		return ok(contactUs.render(username));
+	}
 
 }

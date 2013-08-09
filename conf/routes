@@ -19,6 +19,7 @@ GET		/myAccount					controllers.Application.myAccount()
 POST	/uploadProfilePic			controllers.Application.uploadProfilePic()
 GET		/logTrip					controllers.Application.tripEntry()
 POST	/logTrip					controllers.Application.trip()
+GET		/contactus					controllers.Application.contactUs()
 
 # For Facebook login
 GET 	/channel.html				controllers.Assets.at(path="/public", file="html/channel.html")
