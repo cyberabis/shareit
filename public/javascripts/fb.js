@@ -63,16 +63,16 @@
   
   function setSession(userId) {
 	FB.api('/me', function(response) {
-    });
-    console.log('Setting hidden fields from FB data');
-	document.getElementById('username').value = response.username;
-	document.getElementById('userType').value = 'fb';
-	document.getElementById('firstName').value = response.first_name;
-	document.getElementById('lastName').value = response.last_name;
-	document.getElementById('gender').value = response.gender;
-	document.getElementById('email').value = response.email;
-	console.log('Going to post login...');
-	document.forms["loginf"].submit();
+		console.log('Setting hidden fields from FB data');
+		document.getElementById('username').value = response.username;
+		document.getElementById('userType').value = 'fb';
+		document.getElementById('firstName').value = response.first_name;
+		document.getElementById('lastName').value = response.last_name;
+		document.getElementById('gender').value = response.gender;
+		document.getElementById('email').value = response.email;
+		console.log('Going to post login...');
+		document.forms["loginf"].submit();
+    });    
   }
 
 //For Like
