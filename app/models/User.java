@@ -15,7 +15,14 @@ public class User {
 	private String profilePictureUrl;
 	private int miles;
 	private String gender;
+	private String userType;
 	
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
 	public String getGender() {
 		return gender;
 	}

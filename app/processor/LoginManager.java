@@ -16,8 +16,16 @@ public class LoginManager {
 			else 
 				result = "password invalid";
 		}
-		else
-			result = "username invalid";
+		else {
+			//Do one more check if this is fb user
+			if (user.getUserType().equals("fb")) {
+				//Sign up this user
+				SignupManager.signup(user);
+				result = "logged in";
+			}
+			else
+				result = "username invalid";
+		}			
 		
 		return result;
 	}

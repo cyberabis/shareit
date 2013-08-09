@@ -29,6 +29,7 @@ public class UserDaoMongo implements UserDao {
 			user.setProfilePictureUrl(doc.getString("profilePictureUrl"));
 			user.setMiles((doc.get("miles") == null) ? 0 : doc.getInt("miles"));
 			user.setGender(doc.getString("gender"));
+			user.setUserType(doc.getString("userType"));
 		}		
 		
 		return user;
@@ -71,7 +72,8 @@ public class UserDaoMongo implements UserDao {
                 append("birthDate", user.getBirthDate()).
 				append("profilePictureUrl", user.getProfilePictureUrl()).
 				append("miles", user.getMiles()).
-				append("gender",user.getGender());
+				append("gender",user.getGender()).
+				append("userType", user.getUserType());
 	}
 
 }

@@ -9,7 +9,7 @@
     <p class="text-info">Enable your profile and social network access</p>
     <hr/>
    
-    	@form(routes.Application.login()) {
+    	@form(routes.Application.login(), 'name->"loginf") {
     	
 	    	@if(error != null) {
 	    		<p class="text-error">@error</p>
@@ -19,6 +19,8 @@
 	        	<div class="span4">
 	        		@inputText(loginForm("username"), '_label -> "Your Username", 'placeholder -> "Username") 
 	        		@inputPassword(loginForm("password"), '_label -> "Your Password", 'placeholder -> "Password")
+	        		@inputText(loginForm("userType"), 'style->"display:none")
+	        		
 	        		<input class="btn btn-success" type="submit" value="Login">
 	        	</div>
 	        	<div class="span4">
