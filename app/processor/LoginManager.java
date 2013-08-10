@@ -11,7 +11,7 @@ public class LoginManager {
 		
 		UserDao userDao = new UserDaoMongo();
 		if (userDao.findUser(user.getUsername()) != null) {
-			if (userDao.findUser(user.getUsername()).getPassword().equals(user.getPassword()) &&((user.getPassword() != null) || (!user.getPassword().equals("")))) 
+			if (userDao.findUser(user.getUsername()).getPassword().equals(user.getPassword()) && (user.getPassword() != null) && (!user.getPassword().equals(""))) 
 				result = "logged in";
 			else 
 				result = "password invalid";
