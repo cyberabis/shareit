@@ -9,15 +9,15 @@
     <p class="text-info">View your profile details and the miles you have covered</p>
     <hr/> 
     
+	@if(error != null) {
+		<p class="text-error">@error</p>
+	}    
+	@if(msg != null) {
+		<p class="text-success">@msg</p>
+	}
+    
     <div class="row">
     	<div class="span3">	
-			@if(error != null) {
-				<p class="text-error">@error</p>
-			}    
-			@if(msg != null) {
-				<p class="text-success">@msg</p>
-			}
-			
 			<h5>Profile photo</h5>
 			@if((user.getProfilePictureUrl()==null)||(user.getProfilePictureUrl().equals(""))) {
 				<img src= "@routes.Assets.at("images/def_avatar.png")" class="img-rounded">
@@ -25,7 +25,7 @@
 				<img src= "@user.getProfilePictureUrl()" class="img-rounded">
 			}
 			@form(action = routes.Application.uploadProfilePic, 'enctype -> "multipart/form-data") {    
-		    Select a new profile picture <input type="file" name="picture">    
+		    <input type="file" name="picture">    
 		    <p><input class="btn btn-primary btn-small" type="submit" value="Upload"></p>    
 			}
 		</div>
@@ -73,7 +73,7 @@
 			} else {
 				<img src= "@user.getProfilePictureUrl()" class="img-rounded">
 			}
-			@form(action = routes.Application.uploadProfilePic, 'enctype -> "multipart/form-data") {    
+			@form(action = routes.Application.uploadGaragePic, 'enctype -> "multipart/form-data") {    
 		    Select a new picture <input type="file" name="picture">    
 		    <p><input class="btn btn-primary btn-small" type="submit" value="Upload"></p>    
 			}

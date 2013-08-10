@@ -165,6 +165,22 @@ public class Application extends Controller {
 		return redirect(routes.Application.myAccount());
 	}
 	
+	public static Result uploadGaragePic() {
+		String username = session("user");
+		MultipartFormData body = request().body().asMultipartFormData();
+		FilePart picture = body.getFile("picture");
+		if (picture != null) {
+			File file = picture.getFile();
+			if(MyAccountManager.saveGaragePic(username, file))
+				flash("msg", "Updated garage picture.");
+			else
+				flash("error", "Garage picture upload failed.");
+		} else {
+			flash("error", "Garage picture upload failed.");
+		}
+		return redirect(routes.Application.myAccount());
+	}
+	
 	public static Result tripEntry() {
 		String username = session("user");
 		String error = flash("error");
