@@ -10,7 +10,7 @@
     <hr/> 
     
     <div class="row">
-    	<div class="span4">	
+    	<div class="span3">	
 			@if(error != null) {
 				<p class="text-error">@error</p>
 			}    
@@ -18,22 +18,22 @@
 				<p class="text-success">@msg</p>
 			}
 			
-			<h5>Profile Picture</h5>
+			<h5>Profile photo</h5>
 			@if((user.getProfilePictureUrl()==null)||(user.getProfilePictureUrl().equals(""))) {
-				<p class="text-warning">No picture uploaded!</p>
+				<img src= "@routes.Assets.at("images/def_avatar.png")" class="img-rounded">
 			} else {
 				<img src= "@user.getProfilePictureUrl()" class="img-rounded">
 			}
 			@form(action = routes.Application.uploadProfilePic, 'enctype -> "multipart/form-data") {    
 		    Select a new profile picture <input type="file" name="picture">    
-		    <p><input class="btn btn-info" type="submit" value="Upload"></p>    
+		    <p><input class="btn btn-primary btn-small" type="submit" value="Upload"></p>    
 			}
 		</div>
-		<div class="span4">
-			<h5>User details</h5>
-			<table class="table table-bordered table-striped">
+		<div class="span5">
+			<h5>User Information</h5>
+			<table class="table table-striped table-hover">
 				<tr>
-				  <td>User Name</td>
+				  <td>Username</td>
 				  <td>@user.getUsername()</td>
 				</tr>
 				<tr>
@@ -45,13 +45,38 @@
 				  <td>@user.getLastName()</td>
 				</tr>
 				<tr>
-				  <td>TRC miles</td>
+				  <td>Gender</td>
+				  <td>@user.getGender()</td>
+				</tr>
+				<tr>
+				  <td>TRC points / miles</td>
 				  <td>@user.getMiles()</td>
 				</tr>
 			</table>
 		</div>
 		<div class="span4">
 			@adsenseSqr()
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span6">
+			<h5> My trips </h5>
+			You have not posted any trips to TRC.
+			<br/>
+			<a href="@routes.Application.tripEntry()">Post a trip</a>
+		</div>
+		<div class="span6">
+			<h5> My garage </h5>
+			@if((user.getGaragePictureUrl()==null)||(user.getGaragePictureUrl().equals(""))) {
+				<img src= "@routes.Assets.at("images/def_car.jpg")" class="img-rounded">
+			} else {
+				<img src= "@user.getProfilePictureUrl()" class="img-rounded">
+			}
+			@form(action = routes.Application.uploadProfilePic, 'enctype -> "multipart/form-data") {    
+		    Select a new picture <input type="file" name="picture">    
+		    <p><input class="btn btn-primary btn-small" type="submit" value="Upload"></p>    
+			}
 		</div>
 	</div>
 	

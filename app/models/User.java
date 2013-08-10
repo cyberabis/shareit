@@ -13,6 +13,13 @@ public class User {
 	private String country;
 	private Date birthDate;
 	private String profilePictureUrl;
+	private String garagePictureUrl;
+	public String getGaragePictureUrl() {
+		return garagePictureUrl;
+	}
+	public void setGaragePictureUrl(String garagePictureUrl) {
+		this.garagePictureUrl = garagePictureUrl;
+	}
 	private int miles;
 	private String gender;
 	private String userType;
