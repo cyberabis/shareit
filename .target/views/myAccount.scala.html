@@ -69,7 +69,7 @@
 		<div class="span6">
 			<h5> My garage </h5>
 			@if((user.getGaragePictureUrl()==null)||(user.getGaragePictureUrl().equals(""))) {
-				<img src= "@routes.Assets.at("images/def_car.jpg")" class="img-rounded">
+				<img src= "@routes.Assets.at("images/def_car.png")" class="img-rounded">
 			} else {
 				<img src= "@user.getGaragePictureUrl()">
 			}
