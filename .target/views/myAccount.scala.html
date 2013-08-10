@@ -6,50 +6,56 @@
     
     <br/><br/><br/>
     <h4>My Account</h4>
+    <p class="text-info">View your profile details and the miles you have covered</p>
     <hr/> 
     
-	@if(error != null) {
-		<p class="text-error">@error</p>
-	}    
-	@if(msg != null) {
-		<p class="text-success">@msg</p>
-	}
+    <div class="row">
+    	<div class="span4">	
+			@if(error != null) {
+				<p class="text-error">@error</p>
+			}    
+			@if(msg != null) {
+				<p class="text-success">@msg</p>
+			}
+			
+			<h5>Profile Picture</h5>
+			@if((user.getProfilePictureUrl()==null)||(user.getProfilePictureUrl().equals(""))) {
+				<p class="text-warning">No picture uploaded!</p>
+			} else {
+				<img src= "@user.getProfilePictureUrl()" class="img-rounded">
+			}
+			@form(action = routes.Application.uploadProfilePic, 'enctype -> "multipart/form-data") {    
+		    Select a new profile picture <input type="file" name="picture">    
+		    <p><input class="btn btn-info" type="submit" value="Upload"></p>    
+			}
+		</div>
+		<div class="span4">
+			<h5>User details</h5>
+			<table class="table table-bordered table-striped">
+				<tr>
+				  <td>User Name</td>
+				  <td>@user.getUsername()</td>
+				</tr>
+				<tr>
+				  <td>First Name</td>
+				  <td>@user.getFirstName()</td>
+				</tr>
+				<tr>
+				  <td>Last Name</td>
+				  <td>@user.getLastName()</td>
+				</tr>
+				<tr>
+				  <td>TRC miles</td>
+				  <td>@user.getMiles()</td>
+				</tr>
+			</table>
+		</div>
+		<div class="span4">
+			@adsenseSqr()
+		</div>
+	</div>
 	
-	<h5>Profile Picture</h5>
-	@if((user.getProfilePictureUrl()==null)||(user.getProfilePictureUrl().equals(""))) {
-		<p class="text-warning">No picture uploaded!</p>
-	} else {
-		<img src= "@user.getProfilePictureUrl()" class="img-rounded">
-	}
-	@form(action = routes.Application.uploadProfilePic, 'enctype -> "multipart/form-data") {    
-    Select a new profile picture <input type="file" name="picture">    
-    <p><input class="btn btn-info" type="submit" value="Upload"></p>    
-	}
 	
-	<hr/>
-	
-	<h5>User details</h5>
-		<table class="table table-bordered table-striped">
-			<tr>
-			  <td>User Name</td>
-			  <td>@user.getUsername()</td>
-			</tr>
-			<tr>
-			  <td>First Name</td>
-			  <td>@user.getFirstName()</td>
-			</tr>
-			<tr>
-			  <td>Last Name</td>
-			  <td>@user.getLastName()</td>
-			</tr>
-			<tr>
-			  <td>Email Id</td>
-			  <td>@user.getEmail()</td>
-			</tr>
-			<tr>
-			  <td>TRC miles</td>
-			  <td>@user.getMiles()</td>
-			</tr>
-		</table>
+
 		    
 }
