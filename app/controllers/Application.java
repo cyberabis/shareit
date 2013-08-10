@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import play.data.*;
 import play.mvc.*;
@@ -146,7 +147,8 @@ public class Application extends Controller {
 		String error = flash("error");
 		String msg = flash("msg");
 		User user = MyAccountManager.getUser(username);
-		return ok(myAccount.render(error, msg, user));
+		Map<String, String> trips = TripManager.getTripsbyUser(username);
+		return ok(myAccount.render(error, msg, user, trips));
 	}
 
 	public static Result uploadProfilePic() {

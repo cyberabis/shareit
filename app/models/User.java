@@ -14,15 +14,23 @@ public class User {
 	private Date birthDate;
 	private String profilePictureUrl;
 	private String garagePictureUrl;
+	private Date createDate;
+	private int miles;
+	private String gender;
+	private String userType;
+	
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 	public String getGaragePictureUrl() {
 		return garagePictureUrl;
 	}
 	public void setGaragePictureUrl(String garagePictureUrl) {
 		this.garagePictureUrl = garagePictureUrl;
 	}
-	private int miles;
-	private String gender;
-	private String userType;
 	
 	public String getUserType() {
 		return userType;

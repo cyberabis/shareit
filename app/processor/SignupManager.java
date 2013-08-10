@@ -1,5 +1,7 @@
 package processor;
 
+import java.util.Date;
+
 import dao.UserDao;
 import dao.UserDaoMongo;
 import models.User;
@@ -14,6 +16,7 @@ public class SignupManager {
 			result = "user exists";
 		}
 		else {
+			user.setCreateDate(new Date());
 			userDao.saveUser(user);
 			result = "user saved";
 		}  
