@@ -56,7 +56,7 @@ public class MyAccountManager {
 			}			
 			//Upload after resizing
 			Transformation transformation = new Transformation();
-			transformation.crop("pad").height(300).width(600).radius(5);
+			transformation.crop("pad").height(300).width(600).radius(5).border("3px_solid_rgb:00390b60");
 			Map response = cloudinary.uploader().upload(file, Cloudinary.asMap("transformation", transformation));			
 			user.setGaragePictureUrl((String)response.get("url"));
 			UserDao userDao = new UserDaoMongo();
