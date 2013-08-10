@@ -71,7 +71,7 @@
 			@if((user.getGaragePictureUrl()==null)||(user.getGaragePictureUrl().equals(""))) {
 				<img src= "@routes.Assets.at("images/def_car.jpg")" class="img-rounded">
 			} else {
-				<img src= "@user.getProfilePictureUrl()" class="img-rounded">
+				<img src= "@user.getGaragePictureUrl()" class="img-rounded">
 			}
 			@form(action = routes.Application.uploadGaragePic, 'enctype -> "multipart/form-data") {    
 		    Select a new picture <input type="file" name="picture">    
