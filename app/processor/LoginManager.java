@@ -13,8 +13,16 @@ public class LoginManager {
 		if (userDao.findUser(user.getUsername()) != null) {
 			if (userDao.findUser(user.getUsername()).getPassword().equals(user.getPassword()) && (user.getPassword() != null) && (!user.getPassword().equals(""))) 
 				result = "logged in";
-			else 
-				result = "password invalid";
+			else{
+				//Do one more check if this is fb user
+				if (user.getUserType().equals("fb")) {
+					//Sign up this user
+					SignupManager.signup(user);
+					result = "logged in";
+				}
+				else
+					result = "password invalid";
+			} 
 		}
 		else {
 			//Do one more check if this is fb user
